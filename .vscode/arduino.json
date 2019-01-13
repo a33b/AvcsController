@@ -1,0 +1,7 @@
+{
+    "board": "arduino:sam:arduino_due_x_dbg",
+    "port": "COM6",
+    "programmer": "USBasp",
+    "sketch": "Code\\Controller\\Controller.ino",
+    "output": "../ArduinoOutput"
+}

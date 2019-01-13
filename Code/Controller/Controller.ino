@@ -52,7 +52,7 @@
 #include "Globals.h"
 #include "Screen.h"
 #include "Utilities.h"
-#include "PlxProcessor.h"
+//#include "PlxProcessor.h"
 #include "Feedback.h"
 #include "PeriodicJobs.h"
 #include "IntervalRecorder.h"
@@ -61,14 +61,14 @@
 #include "CurveTable.h"
 
 //#include <..\Pwm_Lib\pwm_lib.h>
-#include "pwm_lib\pwm_lib.h"
-//#include "pwm_lib.h"
+//#include "Pwm_lib\pwm_lib.h"
+#include <pwm_lib.h>
 
 ScreenNavigator navigator;
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7); 
 DFR_Key keys;
 Mode mode;
-PlxProcessor plx;
+//PlxProcessor plx;
 InterruptHandlers interruptHandlers;
 unsigned iterationCounter;
 IPeriodicJobs *jobs = IPeriodicJobs::GetInstance();
@@ -147,7 +147,7 @@ void setup() {
 	// pinMode(A9, INPUT); // Knob?
 
 	navigator.Initialize(&mode);
-	plx.Initialize(&Serial3, &Serial2);	
+	//plx.Initialize(&Serial3, &Serial2);	
 	interruptHandlers.Initialize();
 	mode.Initialize();
 	jobs->Initialize();
@@ -184,7 +184,7 @@ void loop()
 
 	jobs->Update();
 	mode.Update();
-	plx.Update();
+	//plx.Update();
 	terminal->Update();
 	
 	CamTargetAngle = table->GetValue(Crank.Rpm);

@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Users\\Ken\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\**",
+                "C:\\Users\\Ken\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\sam\\1.6.11\\**",
+                "C:\\Program Files (x86)\\Arduino\\tools\\**",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
+                "${workspaceFolder}/**",
+                "C:/Program Files (x86)/Arduino/libraries/LiquidCrystal/src",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/cores/arduino",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/system/libsam",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/system/CMSIS/Device/ATMEL",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/variants/arduino_due_x",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/arm-none-eabi/include",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/lib/gcc/arm-none-eabi/4.8.3/include",
+                "${workspaceFolder}/Code/Pwm_Lib"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "forcedInclude": [
+                "C:\\Users\\Ken\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\sam\\1.6.11\\cores\\arduino\\Arduino.h"
+            ]
+        }
+    ],
+    "version": 4
+}
