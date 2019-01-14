@@ -11,7 +11,7 @@ extern LiquidCrystal lcd;
 #include "Utilities.h"
 #include "Mode.h"
 #include "ExhaustCamState.h"
-#include "PlxProcessor.h"
+//#include "PlxProcessor.h"
 #include "Feedback.h"
 #include "PeriodicJobs.h"
 #include "RollingAverage.h"
@@ -42,7 +42,7 @@ void SelfTest()
 	RunSuite(RollingAverage);
 	//RunSuite(IntakeCamTiming);
 	RunSuite(ExhaustCamTiming);
-	RunSuite(PlxProcessor);
+	//RunSuite(PlxProcessor);
 	RunSuite(Feedback);
 	RunSuite(PeriodicJobs);
 	RunSuite(CurveTable);
