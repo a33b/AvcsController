@@ -3,7 +3,7 @@
 
 // My car idled at 750 before I put in bigger cams, and it idles at
 // 1000 RPM now.
-#define IDLE_RPM 1000
+#define IDLE_RPM 750
 
 // Solenoids will be disabled below this RPM. The factory dual-AVCS
 // tunes also keep them off at idle, probably because the idle RPM 

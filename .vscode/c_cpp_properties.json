@@ -4,10 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "C:\\Users\\Ken\\Documents\\Arduino\\libraries\\**",
-                "C:\\Users\\Ken\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\**",
                 "C:\\Users\\Ken\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\sam\\1.6.11\\**",
                 "C:\\Program Files (x86)\\Arduino\\tools\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
                 "${workspaceFolder}/**",
                 "C:/Program Files (x86)/Arduino/libraries/**",
                 "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/**",
@@ -17,8 +15,10 @@
                 "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/system/CMSIS/Device/ATMEL",
                 "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/variants/arduino_due_x",
                 "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/cores/arduino",
+                "${workspaceFolder}/Code/Controller",
                 "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/arm-none-eabi/include",
-                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/lib/gcc/arm-none-eabi/4.8.3/include"
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/tools/arm-none-eabi-gcc/4.8.3-2014q1/lib/gcc/arm-none-eabi/4.8.3/include",
+                "${workspaceFolder}/Code/PWM"
             ],
             "defines": [
                 "_DEBUG",
@@ -28,7 +28,8 @@
             "intelliSenseMode": "msvc-x64",
             "forcedInclude": [
                 "C:\\Users\\Ken\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\sam\\1.6.11\\cores\\arduino\\Arduino.h",
-                "C:\\Users\\Ken\\Documents\\Arduino\\libraries\\**"
+                "C:\\Users\\Ken\\Documents\\Arduino\\libraries\\**",
+                "C:/Users/Ken/AppData/Local/Arduino15/packages/arduino/hardware/sam/1.6.11/**"
             ]
         }
     ],

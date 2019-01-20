@@ -40,6 +40,10 @@
 // Elapsed time corresponds to cam phase angle.
 // Use PID feedback to set AVCS solenoid PWM, to drive cam angle toward desired angle.
 
+//#include "C:\Users\Ken\AppData\Local\Arduino15\packages\arduino\tools\arm-none-eabi-gcc\4.8.3-2014q1\arm-none-eabi\include\stdint.h"
+#include <stdint.h> //https://developer.mbed.org/handbook/C-Data-Types
+#define ARDUINO
+#define _SAM3XA_
 #include "SelfTest.h"
 #include "Mode.h"
 #include "ScreenNavigator.h"
@@ -60,8 +64,13 @@
 #include "Configuration.h"
 #include "CurveTable.h"
 
-//#include <..\Pwm_Lib\pwm_lib.h>
-//#include "Pwm_lib\pwm_lib.h"
+#include "decoder.h"
+#include "crankMaths.h"
+#include "DueTimer.h"
+
+
+//#include <..\PWM\pwm_lib.h>
+//#include "PWM\pwm_lib.h"
 #include <pwm_lib.h>
 
 ScreenNavigator navigator;
