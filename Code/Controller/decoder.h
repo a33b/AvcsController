@@ -1,17 +1,17 @@
 #ifndef DECODERS_H
 #define DECODERS_H
 
-#if defined(CORE_AVR)
-  #define READ_PRI_TRIGGER() ((*triggerPri_pin_port & triggerPri_pin_mask) ? true : false)
-  #define READ_SEC_TRIGGER() ((*triggerSec_pin_port & triggerSec_pin_mask) ? true : false)
-#else
-  #define READ_PRI_TRIGGER() digitalRead(pinTrigger)
-  #define READ_SEC_TRIGGER() digitalRead(pinTrigger2)
-#endif
 
+#define READ_PRI_TRIGGER() digitalRead(pinTrigger)
+#define READ_SEC_TRIGGER() digitalRead(pinTrigger2)
+#define READ_IN2_TRIGGER() digitalRead(pinTrigger3)
+#define READ_EX1_TRIGGER() digitalRead(pinTrigger4)
+#define READ_EX2_TRIGGER() digitalRead(pinTrigger5)
+
+/* no logger here!
 static inline void addToothLogEntry(unsigned long, bool);
 void loggerPrimaryISR();
-void loggerSecondaryISR();
+void loggerSecondaryISR(); */
 static inline uint16_t stdGetRPM(uint16_t);
 static inline void setFilter(unsigned long);
 static inline int crankingGetRPM(byte);
@@ -28,6 +28,9 @@ void (*triggerSetEndTeeth)(); //Pointer to the triggerSetEndTeeth function of ea
 void triggerSetup_NissanVQ();
 void triggerPri_NissanVQ();
 void triggerSec_NissanVQ();
+void triggerIN2_NissanVQ();
+void triggerEX1_NissanVQ();
+void triggerEX2_NissanVQ();
 uint16_t getRPM_NissanVQ();
 int getCrankAngle_NissanVQ();
 void triggerSetEndTeeth_NissanVQ();
@@ -38,6 +41,12 @@ volatile unsigned long curTime;
 volatile unsigned long curGap;
 volatile unsigned long curTime2;
 volatile unsigned long curGap2;
+volatile unsigned long curTime3;
+volatile unsigned long curGap3;
+volatile unsigned long curTime4;
+volatile unsigned long curGap4;
+volatile unsigned long curTime5;
+volatile unsigned long curGap5;
 volatile unsigned long lastGap;
 volatile unsigned long targetGap;
 volatile unsigned long compositeLastToothTime;
@@ -45,6 +54,7 @@ volatile unsigned long compositeLastToothTime;
 volatile int toothCurrentCount = 0; //The current number of teeth (Onec sync has been achieved, this can never actually be 0
 volatile int gapPriCurrentRev = 0; //The current number of long gaps during a single crank rotation
 volatile byte toothSystemCount = 0; //Used for decoders such as Audi 135 where not every tooth is used for calculating crank angle. This variable stores the actual number of teeth, not the number being used to calculate crank angle
+volatile byte teethSinceTDC = 0; // used to determine the window to count secondary triggers
 volatile unsigned long toothSystemLastToothTime = 0; //As below, but used for decoders where not every tooth count is used for calculation
 volatile unsigned long toothLastToothTime = 0; //The time (micros()) that the last tooth was registered
 volatile unsigned long toothLastSecToothTime = 0; //The time (micros()) that the last tooth was registered on the secondary input
@@ -58,12 +68,29 @@ volatile unsigned long toothOneMinusOneTime = 0; //The 2nd to last time (micros(
 volatile bool revolutionOne = 0; // For sequential operation, this tracks whether the current revolution is 1 or 2 (not 1)
 
 volatile unsigned int secondaryToothCount; //Used for identifying the current secondary (Usually cam) tooth for patterns with multiple secondary teeth
+volatile unsigned int secondaryToothCountMinus1; //Used as a backup method for determining sync in case of loss of intake2 trigger
+volatile unsigned int secondaryToothCountMinus2; //Used as a backup method for determining sync in case of loss of intake2 trigger
 volatile unsigned long secondaryLastToothTime = 0; //The time (micros()) that the last tooth was registered (Cam input)
 volatile unsigned long secondaryLastToothTime1 = 0; //The time (micros()) that the last tooth was registered (Cam input)
+
+volatile unsigned int intake2ToothCount; //Used for identifying the current secondary tooth count in the window
+volatile unsigned int intake2ToothCountMinus1; //Used as a backup method for determining sync in case of loss of secondary trigger
+volatile unsigned int intake2ToothCountMinus2; //Used as a backup method for determining sync in case of loss of secondary trigger
+volatile unsigned long intake2LastToothTime = 0; //The time (micros()) that the last tooth was registered (Cam input)
+volatile unsigned long intake2LastToothTime1 = 0; //The time (micros()) that the last tooth was registered (Cam input)
+
+volatile unsigned int exhaust1ToothCount; //Used for identifying the current secondary (Usually cam) tooth for patterns with multiple secondary teeth
+volatile unsigned long exhaust1LastToothTime = 0; //The time (micros()) that the last tooth was registered (Cam input)
+volatile unsigned long exhaust1LastToothTime1 = 0; //The time (micros()) that the last tooth was registered (Cam input)
+
+volatile unsigned int exhaust2ToothCount; //Used for identifying the current secondary (Usually cam) tooth for patterns with multiple secondary teeth
+volatile unsigned long exhaust2LastToothTime = 0; //The time (micros()) that the last tooth was registered (Cam input)
+volatile unsigned long exhaust2LastToothTime1 = 0; //The time (micros()) that the last tooth was registered (Cam input)
 
 volatile int triggerActualTeeth;
 volatile unsigned long triggerFilterTime; // The shortest time (in uS) that pulses will be accepted (Used for debounce filtering)
 volatile unsigned long triggerSecFilterTime; // The shortest time (in uS) that pulses will be accepted (Used for debounce filtering) for the secondary input
+volatile unsigned long triggerEXHFilterTime; // The shortest time (in uS) that pulses will be accepted (Used for debounce filtering) for the exhaust cam input
 volatile bool validTrigger; //Is set true when the last trigger (Primary or secondary) was valid (ie passed filters)
 unsigned int triggerSecFilterTime_duration; // The shortest valid time (in uS) pulse DURATION
 volatile uint16_t triggerToothAngle; //The number of crank degrees that elapse per tooth

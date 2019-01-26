@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma pack
 ///////////////////////////////////////////////////////////////////////////////
 // Global variables
 //
@@ -276,7 +276,7 @@ struct config4 {
 #if defined(CORE_AVR)
   };
 #else
-  } __attribute__((__packed__)); //The 32 bit systems require all structs to be fully packed
+  }; //The 32 bit systems require all structs to be fully packed
 #endif
 
 struct config4 configPage4;

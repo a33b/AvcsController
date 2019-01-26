@@ -61,6 +61,7 @@ Screen* MenuBuilder::BuildMenu()
 		0
 	};
 
+	/*
 	Screen* PlxRow[] = {
 		new TwoValueScreen("PLX Data", &OilTemperature, &PlxPacketCount),
 		new SingleValueScreen("PLX RX Sensors", &ReceivedSensorCount),
@@ -68,7 +69,7 @@ Screen* MenuBuilder::BuildMenu()
 		new TwoValueScreen("PLX RX Pressure", &ReceivedFluidPressureAddress, &ReceivedFluidPressure),
 		0
 	};
-
+	*/
 	Screen* LeftCamRow[] = {
 		new SingleValueScreen("Left Rpm", &LeftExhaustCam.Rpm),
 		new SingleValueScreen("Left Interval", &LeftExhaustCam.AverageInterval),
@@ -126,7 +127,7 @@ Screen* MenuBuilder::BuildMenu()
 	{
 		ScreenNavigator::BuildRow(MainRow),
 		ScreenNavigator::BuildRow(ErrorRow),
-		ScreenNavigator::BuildRow(PlxRow),
+	//	ScreenNavigator::BuildRow(PlxRow),
 		ScreenNavigator::BuildRow(LeftCamRow),
 		ScreenNavigator::BuildRow(RightCamRow),
 		ScreenNavigator::BuildRow(CrankRow),

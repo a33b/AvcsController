@@ -196,7 +196,7 @@ void loop()
 	//plx.Update();
 	terminal->Update();
 	
-	CamTargetAngle = table->GetValue(Crank.Rpm);
+	CamTargetAngle = table->GetValue(Crank.Rpm); //do 3d table here instead
 
 	// RPM jumps around a lot at idle, so rather than chasing noisy 
 	// data I am just letting the cams rest. At least for now.
